@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sudoku</title>
+    <script type="text/javascript" src="sudoku.js" defer></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" href='cascades-logo.png'>
+    <link rel="stylesheet" href="sudoku.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <meta name="author" content="Frédéric Gadoury">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <header id="header">
+        <img src='cascades-logo.png' style="width: 170px">
+        <h1>SUDOKU CASCADEURS PRO</h1>
+    </header>
+    <select id='difficulty' style="position: absolute">
+        <option value="" selected disabled hidden>Difficulté</option>
+        <option value="easy">Facile</option>
+        <option value="normal">Normale</option>
+        <option value="hard">Difficile</option>
+    </select>
+    <button id='play' onclick="play()">PLAY!</button>
+    <button id='reset' onclick="resetPlay()" style='display:none'>Reset</button>
+    <div id='countup' style="display:none"><span id="minutes"></span>:<span id="seconds"></span></div>
+    <div id='sidebar' class='sidebar' style='display:none'>
+        <a><p class='sidebarWords'><b>Timer</b></p><input type='checkbox' id='timer' class='checkbox' onchange="timeCheck(this)"/>
+        <label for='timer' class='toggle'></label></a>
+        <a><p class='sidebarWords'><b>Aide</b></p><input type='checkbox' id='help' class='checkbox' onchange="helpCheck(this)"/>
+        <label id='helpToggle' for='help' class='toggle'></label></a>
+        <a><p class='sidebarWords'><b>DarkMode</b></p><input type='checkbox' id='darkMode' class='checkbox' onchange="darkModeSwitch(this)"/>
+        <label id='helpToggle' for='darkMode' class='toggle'></label></a>
+    </div>
+    <div id="sudokuDiv" class="sudokuDiv" style="display: none">
+        <table id="sudokuTable">
+            <tr id="row0">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="row1">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="row2">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="row3">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="row4">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="row5">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="row6">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="row7">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="row8">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <canvas id="explosion" style="position: absolute" ></canvas>
+</body>
+
+</html>
